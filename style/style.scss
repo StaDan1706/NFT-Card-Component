@@ -1,0 +1,148 @@
+@mixin displayFlex($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin hoverCyan {
+  &:hover {
+    cursor: pointer;
+    color: var(--cyan);
+  }
+}
+
+:root {
+  --app-background: hsl(217, 54%, 11%);
+  --card-background: hsl(216, 50%, 16%);
+  --card-background-hover: hsla(178, 100%, 50%, 0.5);
+  --line: hsl(215, 32%, 27%);
+  --blue-text: hsl(215, 51%, 70%);
+  --white: hsl(0, 0%, 100%);
+  --cyan: hsl(178, 100%, 50%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  @include displayFlex(row);
+  height: 100vh;
+  background: var(--app-background);
+}
+
+.card {
+  @include displayFlex(column);
+  position: relative;
+  background: var(--card-background);
+  box-shadow: 20px 20px 15px hsla(212, 100%, 3%, 0.589);
+  max-width: 325px;
+  border-radius: 20px;
+
+  &__top-section {
+    margin: 20px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 275px;
+
+    &__image {
+      cursor: pointer;
+      max-width: 275px;
+    }
+
+    &__hover-plate {
+      @include displayFlex(row);
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--card-background-hover);
+      transition: 0.1s linear;
+      opacity: 0;
+
+      &::after {
+        content: url(/images/icon-view.svg);
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__description {
+    color: var(--white);
+    padding: 0 20px;
+
+    &__header__span {
+      @include hoverCyan();
+      font-size: 1.25rem;
+    }
+
+    &__paragraph {
+      color: var(--blue-text);
+      padding: 10px 0;
+      font-size: 0.9rem;
+    }
+  }
+
+  &__information {
+    @include displayFlex(row);
+    justify-content: space-between;
+    position: relative;
+    color: var(--blue-text);
+    width: 100%;
+    padding: 20px;
+
+    &__price {
+      @include displayFlex(row);
+      color: var(--cyan);
+
+      &__icon {
+        padding-right: 5px;
+      }
+    }
+
+    &__time {
+      @include displayFlex(row);
+      gap: 5px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 90%;
+      height: 1px;
+      left: 50%;
+      bottom: -10px;
+      transform: translate(-50%);
+      background: var(--blue-text);
+    }
+  }
+
+  &__creator-info {
+    @include displayFlex(row);
+    color: var(--blue-text);
+    padding: 40px 0;
+
+    &__image {
+      width: 40px;
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    &__name__span {
+      @include hoverCyan();
+      color: var(--white);
+    }
+  }
+}
