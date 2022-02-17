@@ -67,6 +67,7 @@ body {
       background: var(--card-background-hover);
       transition: 0.1s linear;
       opacity: 0;
+      border-radius: 10%;
 
       &::after {
         content: url(/images/icon-view.svg);
