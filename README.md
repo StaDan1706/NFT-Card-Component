@@ -1,6 +1,10 @@
+## Live demo
+
+https://amazing-johnson-8b1ea2.netlify.app
+
 # NFT preview card component
 
-(./images/desktop-preview.jpg)
+!(./images/desktop-preview.jpg)
 
 ## Welcome! 👋
 
